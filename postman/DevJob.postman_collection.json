@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "7691b8a9-d4c5-4c3e-aaa0-eee381195734",
+		"name": "DevJob",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17181063"
+	},
+	"item": [
+		{
+			"name": "position",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3311/positions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3311",
+							"path": [
+								"positions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3311/positions/:positiondId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3311",
+							"path": [
+								"positions",
+								":positiondId"
+							],
+							"variable": [
+								{
+									"key": "positiondId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3311/positions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3311",
+							"path": [
+								"positions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3311/positions/:positiondId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3311",
+							"path": [
+								"positions",
+								":positiondId"
+							],
+							"variable": [
+								{
+									"key": "positiondId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3311/positions/:positiondId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3311",
+							"path": [
+								"positions",
+								":positiondId"
+							],
+							"variable": [
+								{
+									"key": "positiondId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "applicant",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3311/appliacnts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3311",
+							"path": [
+								"appliacnts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3311/appliacnts/:applicantId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3311",
+							"path": [
+								"appliacnts",
+								":applicantId"
+							],
+							"variable": [
+								{
+									"key": "applicantId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3311/appliacnts/:applicantId",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3311",
+							"path": [
+								"appliacnts",
+								":applicantId"
+							],
+							"variable": [
+								{
+									"key": "applicantId",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

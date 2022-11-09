@@ -4,5 +4,6 @@ module.exports = {
   levelEnum: require('./level.enum'),
   modelNames: require('./modelNames'),
   regexp: require('./regexp'),
+  searchParamsEnum: require('./searchParams.enum'),
   statusCode: require('./statusCode.enum'),
 };

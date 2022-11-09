@@ -1,13 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const { applicantRouter, positionRouter } = require('./routes');
-const { mainErrorHandler } = require('./errors');
+
 const {
   config: {
     PORT,
     MONGO_URL,
   },
 } = require('./configs');
+const { mainErrorHandler } = require('./errors');
+const { applicantRouter, positionRouter } = require('./routes');
 require('dotenv').config();
 
 const app = express();

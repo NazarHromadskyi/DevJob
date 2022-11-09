@@ -26,7 +26,7 @@ const ApplicantSchema = new Schema({
     trim: true,
   },
 
-  japaneseRequired: {
+  japaneseKnowledge: {
     type: Boolean,
     required: true,
   },

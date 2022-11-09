@@ -24,8 +24,7 @@ module.exports = {
 
   getOneById: async (req, res, next) => {
     try {
-      const { positionId } = req.params;
-      const item = await positionService.getOneById(positionId);
+      const { item } = req;
 
       res.json(item);
     } catch (e) {

@@ -24,7 +24,7 @@ module.exports = {
       const { item } = req;
 
       if (!item) {
-        throw new ApiError(statusCode.NOT_FOUND, 'Item not found');
+        throw new ApiError('Item not found', statusCode.NOT_FOUND);
       }
 
       next();
@@ -38,7 +38,7 @@ module.exports = {
       const { error, value } = validator.validate(req[searchIn]);
 
       if (error) {
-        throw new ApiError(statusCode.BAD_REQUEST, error.details[0].message);
+        throw new ApiError( error.details[0].message, statusCode.BAD_REQUEST);
       }
 
       req.body = value;

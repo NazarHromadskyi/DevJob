@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const { categoryEnum, regexp, levelEnum } = require('../constants');
 
-const categoryScheme = Joi.string().trim().lowercase().valid(Object.values(categoryEnum));
+const categoryScheme = Joi.string().trim().lowercase().valid(...Object.values(categoryEnum));
 
 const createApplication = Joi.object({
   categories: Joi
@@ -20,7 +20,7 @@ const createApplication = Joi.object({
     .required()
     .trim()
     .lowercase()
-    .valid(Object.values(levelEnum)),
+    .valid(...Object.values(levelEnum)),
 
   japaneseKnowledge: Joi
     .boolean()
@@ -41,7 +41,7 @@ const updateApplication = Joi.object({
     .string()
     .trim()
     .lowercase()
-    .valid(Object.values(levelEnum)),
+    .valid(...Object.values(levelEnum)),
 
   japaneseKnowledge: Joi.boolean(),
 });

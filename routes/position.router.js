@@ -2,7 +2,9 @@ const { Router } = require('express');
 
 const positionRouter = Router();
 
-positionRouter.get('');
+positionRouter.get('/', (req, res) => {
+  res.json('ayo');
+});
 positionRouter.post('/');
 
 positionRouter.get('/:positionId');

@@ -25,8 +25,12 @@ app.use('*', (req, res, next) => {
 
 app.use(mainErrorHandler);
 
-app.listen(PORT, () => {
-  console.log(`App listen: ${PORT}`);
+app.listen(PORT, async () => {
+  try {
+    console.log(`App listen: ${PORT}`);
 
-  mongoose.connect(MONGO_URL);
+    await mongoose.connect(MONGO_URL);
+  } catch (e) {
+    console.log(e);
+  }
 });

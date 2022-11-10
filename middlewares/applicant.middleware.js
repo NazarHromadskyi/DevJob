@@ -8,6 +8,10 @@ module.exports = {
       if (isApplicantNew) {
         const { item } = req;
 
+        if (!item) {
+          return next();
+        }
+
         if (item) {
           throw new ApiError(`Applicant with email: [${item.email}] already exist`, statusCodesEnum.CONFLICT);
         }

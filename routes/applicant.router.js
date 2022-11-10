@@ -2,7 +2,7 @@ const { Router } = require('express');
 
 const {
   dbFieldsEnum: { _ID },
-  searchParamsEnum: { APPLICANT_ID, PARAMS },
+  searchParamsEnum: { APPLICANT_ID, EMAIL, PARAMS },
 } = require('../constants');
 const { applicantController } = require('../controllers');
 const {
@@ -20,6 +20,8 @@ const applicantRouter = Router();
 applicantRouter.post(
   '/',
   validateByParam(applicantValidator.createApplicant),
+  getItemByParam(Applicant, EMAIL),
+  isApplicantUnique(true),
   applicantController.create,
 );
 

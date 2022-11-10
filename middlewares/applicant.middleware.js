@@ -1,4 +1,4 @@
-const { statusCode } = require('../constants');
+const { statusCodesEnum } = require('../constants');
 const { ApiError } = require('../errors');
 const { applicantService } = require('../services');
 
@@ -9,7 +9,7 @@ module.exports = {
         const { item } = req;
 
         if (item) {
-          throw new ApiError(`Applicant with email:${item.email} already exist`, statusCode.CONFLICT);
+          throw new ApiError(`Applicant with email: [${item.email}] already exist`, statusCodesEnum.CONFLICT);
         }
       }
 
@@ -20,7 +20,7 @@ module.exports = {
       const applicant = await applicantService.getOne({ email, _id: { $ne: id } });
 
       if (applicant) {
-        throw new ApiError(`Applicant with email:${email} already exist`, statusCode.CONFLICT);
+        throw new ApiError(`Applicant with email: [${email}] already exist`, statusCodesEnum.CONFLICT);
       }
 
       next();

@@ -2,7 +2,7 @@ const { Router } = require('express');
 
 const {
   dbFieldsEnum: { _ID },
-  searchParamsEnum: { APPLICANT_ID, EMAIL, PARAMS },
+  searchParamsEnum: { APPLICANT_ID, PARAMS },
 } = require('../constants');
 const { applicantController } = require('../controllers');
 const {
@@ -26,9 +26,9 @@ applicantRouter.post(
 applicantRouter.put(
   '/:applicantId',
   validateByParam(applicantValidator.updateApplicant),
-  getItemByParam(Applicant, EMAIL),
+  getItemByParam(Applicant, APPLICANT_ID, PARAMS, _ID),
   isItemPresent,
-  isApplicantUnique,
+  isApplicantUnique(false),
   applicantController.update,
 );
 applicantRouter.delete(

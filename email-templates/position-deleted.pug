@@ -1,7 +1,14 @@
-p Greetings
-| This position was deleted
-| #{category}
-| #{level}
-| #{company}
-| #{description}
-| #{japaneseRequired}
+extends container
+
+block content
+    p Unfortunately this position has been closed. Don't get discouraged and stay tuned for new positions.
+    div(class='position')
+        span Category: #{category}
+            hr
+            span Level: #{level}
+            hr
+            span Description: #{description}
+            hr
+            span Company: #{company}
+            hr
+            span Japanese requirement: #{japaneseRequired}

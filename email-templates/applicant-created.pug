@@ -1,10 +1,13 @@
-p Greetings
-| You will receive recommendations based on your application
-hr
-ul
+extends container
+
+block content
+    p Thanks for the application. Below you can see recommendation based on your skills.
     for position in positions
-      li
-      span Category: #{position.category}
-
-
-
+      div(class='position')
+        span Category: #{position.category}
+          hr
+          span Level: #{position.level}
+          hr
+          span Description: #{position.description}
+          hr
+          span Japanese requirement: #{position.japaneseRequired ? 'required' : 'not required'}

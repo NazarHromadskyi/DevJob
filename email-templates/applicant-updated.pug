@@ -1,12 +1,14 @@
 extends container
 
 block content
-    div
-        p We have a new list of positions based on your latest update
-        ul
-            for position in positions
-              hr
-              li
-              span Category: #{position.category}
-              li
-              span Level: #{position.level}
+    p We have a new list of position for you based on your latest update
+    for position in positions
+        div(class='position')
+            span Category: #{position.category}
+                hr
+                span Level: #{position.level}
+                hr
+                span Description: #{position.description}
+                hr
+                span Japanese requirement: #{position.japaneseRequired ? 'required' : 'not required'}
+

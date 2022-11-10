@@ -6,7 +6,7 @@ const { subscriptionUtil: { findMatches } } = require('../utils');
 module.exports = {
   getAll: async (req, res, next) => {
     try {
-      const items = await positionService.getAll();
+      const items = await positionService.getAll(req.query);
 
       res.json(items);
     } catch (e) {
@@ -51,7 +51,7 @@ module.exports = {
         );
       });
 
-      res.status(statusCodesEnum.CREATED).json(applicants);
+      res.status(statusCodesEnum.CREATED).json(item);
     } catch (e) {
       next(e);
     }
@@ -118,7 +118,7 @@ module.exports = {
             company,
             japaneseRequired: japaneseNormalized,
             level,
-          }, // todo throw params by object
+          },
         );
       });
 

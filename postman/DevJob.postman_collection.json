@@ -15,7 +15,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3311/positions",
+							"raw": "http://localhost:3311/positions?category=ANGULAR           &level=juNior",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -23,6 +23,26 @@
 							"port": "3311",
 							"path": [
 								"positions"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "ANGULAR           "
+								},
+								{
+									"key": "level",
+									"value": "juNior"
+								},
+								{
+									"key": "tag",
+									"value": "locate",
+									"disabled": true
+								},
+								{
+									"key": "test",
+									"value": "12",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -47,7 +67,7 @@
 							"variable": [
 								{
 									"key": "positiondId",
-									"value": null
+									"value": "636d1ee61cec5286b0bf2eac"
 								}
 							]
 						}
@@ -59,6 +79,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Node JS developer position with possible relocate to Uganda\",\r\n    \"category\": \"nodejs\",\r\n    \"company\": \"Uganda Corp.\",\r\n    \"level\": \"senior\",\r\n    \"japaneseRequired\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:3311/positions",
 							"protocol": "http",
@@ -78,6 +107,15 @@
 					"request": {
 						"method": "PATCH",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"japaneseRequired\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "http://localhost:3311/positions/:positiondId",
 							"protocol": "http",
@@ -92,7 +130,7 @@
 							"variable": [
 								{
 									"key": "positiondId",
-									"value": null
+									"value": "636bf13ea4abcb069a3dc6fc"
 								}
 							]
 						}
@@ -118,7 +156,7 @@
 							"variable": [
 								{
 									"key": "positiondId",
-									"value": null
+									"value": "636d5c130c0fa11e2f0234eb"
 								}
 							]
 						}
@@ -135,15 +173,24 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"cyberng0409@gmail.com\",\r\n    \"categories\": [\"react\", \"angular\", \"nodejs\", \"javascript\"],\r\n    \"level\": \"senior\",\r\n    \"japaneseKnowledge\": \"true\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:3311/appliacnts",
+							"raw": "http://localhost:3311/applicants",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3311",
 							"path": [
-								"appliacnts"
+								"applicants"
 							]
 						}
 					},
@@ -154,21 +201,30 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"level\": \"middle\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:3311/appliacnts/:applicantId",
+							"raw": "http://localhost:3311/applicants/:applicantId",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3311",
 							"path": [
-								"appliacnts",
+								"applicants",
 								":applicantId"
 							],
 							"variable": [
 								{
 									"key": "applicantId",
-									"value": null
+									"value": "636d5ad043bda74c7bb6dc19"
 								}
 							]
 						}
@@ -181,20 +237,20 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:3311/appliacnts/:applicantId",
+							"raw": "http://localhost:3311/applicants/:applicantId",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "3311",
 							"path": [
-								"appliacnts",
+								"applicants",
 								":applicantId"
 							],
 							"variable": [
 								{
 									"key": "applicantId",
-									"value": null
+									"value": "636d5aaa43bda74c7bb6dc13"
 								}
 							]
 						}

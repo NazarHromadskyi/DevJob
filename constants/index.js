@@ -6,5 +6,5 @@ module.exports = {
   modelNames: require('./modelNames'),
   regexp: require('./regexp'),
   searchParamsEnum: require('./searchParams.enum'),
-  statusCode: require('./statusCode.enum'),
+  statusCodesEnum: require('./statusCode.enum'),
 };

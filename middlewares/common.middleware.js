@@ -1,4 +1,4 @@
-const { searchParamsEnum, statusCode } = require('../constants');
+const { searchParamsEnum, statusCodesEnum } = require('../constants');
 const { ApiError } = require('../errors');
 
 module.exports = {
@@ -24,7 +24,7 @@ module.exports = {
       const { item } = req;
 
       if (!item) {
-        throw new ApiError('Item not found', statusCode.NOT_FOUND);
+        throw new ApiError('Item not found', statusCodesEnum.NOT_FOUND);
       }
 
       next();
@@ -38,7 +38,7 @@ module.exports = {
       const { error, value } = validator.validate(req[searchIn]);
 
       if (error) {
-        throw new ApiError( error.details[0].message, statusCode.BAD_REQUEST);
+        throw new ApiError(error.details[0].message, statusCodesEnum.BAD_REQUEST);
       }
 
       req.body = value;

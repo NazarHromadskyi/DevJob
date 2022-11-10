@@ -1,5 +1,5 @@
 const { positionService } = require('../services');
-const { statusCode } = require('../constants');
+const { statusCodesEnum } = require('../constants');
 
 module.exports = {
   getAll: async (req, res, next) => {
@@ -14,9 +14,9 @@ module.exports = {
 
   create: async (req, res, next) => {
     try {
-      const createdItem = await positionService.create(req.body);
+      const item = await positionService.create(req.body);
 
-      res.json(createdItem);
+      res.statusCodesEnum.CREATED.json(item);
     } catch (e) {
       next(e);
     }
@@ -51,7 +51,7 @@ module.exports = {
       const { positionId } = req.params;
       await positionService.deleteById(positionId);
 
-      res.status(statusCode.DELETED).json('Item deleted');
+      res.sendStatus(statusCodesEnum.DELETED);
     } catch (e) {
       next(e);
     }

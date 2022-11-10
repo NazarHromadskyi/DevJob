@@ -3,7 +3,7 @@ const { categoryEnum, regexp, levelEnum } = require('../constants');
 
 const categoryScheme = Joi.string().trim().lowercase().valid(...Object.values(categoryEnum));
 
-const createApplication = Joi.object({
+const createApplicant = Joi.object({
   categories: Joi
     .array()
     .items(categoryScheme)
@@ -27,7 +27,7 @@ const createApplication = Joi.object({
     .required(),
 });
 
-const updateApplication = Joi.object({
+const updateApplicant = Joi.object({
   categories: Joi
     .array()
     .items(categoryScheme),
@@ -47,6 +47,6 @@ const updateApplication = Joi.object({
 });
 
 module.exports = {
-  createApplication,
-  updateApplication,
+  createApplicant,
+  updateApplicant,
 };

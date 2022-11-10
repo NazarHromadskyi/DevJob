@@ -11,6 +11,7 @@
         "ecmaVersion": "latest"
     },
     "rules": {
-        "global-require": "off"
+        "global-require": "off",
+        "no-unused-expressions": "off"
     }
 }

@@ -9,8 +9,8 @@ const sendEmail = async (userMail, emailAction, locals = {}) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: '', // todo
-      pass: '',
+      user: process.env.NO_REPLY_EMAIL,
+      pass: process.env.NO_REPLY_PASSWORD,
     },
   });
 
@@ -28,7 +28,7 @@ const sendEmail = async (userMail, emailAction, locals = {}) => {
 
   const html = await templateParser.render(
     emailInfo.templateName,
-    { ...locals, frontendURL: '' }, // todo
+    { ...locals },
   );
 
   return transporter.sendMail({

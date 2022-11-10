@@ -1,5 +1,6 @@
-const { positionService } = require('../services');
-const { statusCodesEnum } = require('../constants');
+const { positionService, applicantService, emailService } = require('../services');
+const { statusCodesEnum, emailActionEnum } = require('../constants');
+const { Applicant } = require('../models');
 
 module.exports = {
   getAll: async (req, res, next) => {
@@ -15,8 +16,38 @@ module.exports = {
   create: async (req, res, next) => {
     try {
       const item = await positionService.create(req.body);
+      const {
+        description,
+        category,
+        company,
+        japaneseRequired,
+        level,
+      } = item;
+      let japanese;
+      japaneseRequired ? japanese = 'required' : japanese = 'not required';
+      // const filterObject = {};
+      // let japaneseSearchIn;
+      // japaneseRequired ? japaneseSearchIn = [true] : japaneseSearchIn = [true, false];
+      // Object.assign(filterObject, {
+      //   $and: [
+      //     { categories: { $in: category } },
+      //     { level: { $eq: level } },
+      //     { japaneseKnowledge: { $in: japaneseSearchIn } },
+      //   ],
+      // });
+      //
+      // const applications = await Applicant.find(filterObject);
+      // console.log(applications);
 
-      res.statusCodesEnum.CREATED.json(item);
+      await emailService.sendEmail(
+        'cyberng0409@gmail.com',
+        emailActionEnum.POSITION_CREATED,
+        {
+          category, description, company, japaneseRequired: japanese, level,
+        },
+      );
+
+      res.status(statusCodesEnum.CREATED).json(item);
     } catch (e) {
       next(e);
     }

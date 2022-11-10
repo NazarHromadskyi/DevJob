@@ -1,6 +1,6 @@
-const { positionService, emailService } = require('../services');
 const { statusCodesEnum, emailActionEnum } = require('../constants');
 const { Applicant } = require('../models');
+const { positionService, emailService } = require('../services');
 const { subscriptionUtil: { findMatches } } = require('../utils');
 
 module.exports = {

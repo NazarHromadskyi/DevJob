@@ -1,5 +1,10 @@
 const { Schema, model } = require('mongoose');
-const { modelNames, categoryEnum, levelEnum } = require('../constants');
+
+const {
+  categoryEnum,
+  levelEnum,
+  modelNames,
+} = require('../constants');
 
 const ApplicantSchema = new Schema({
   categories: {

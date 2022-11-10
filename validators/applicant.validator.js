@@ -1,5 +1,10 @@
 const Joi = require('joi');
-const { categoryEnum, regexp, levelEnum } = require('../constants');
+
+const {
+  categoryEnum,
+  levelEnum,
+  regexp,
+} = require('../constants');
 
 const categoryScheme = Joi.string().trim().lowercase().valid(...Object.values(categoryEnum));
 

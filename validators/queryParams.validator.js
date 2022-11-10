@@ -1,4 +1,5 @@
 const Joi = require('joi');
+
 const { categoryEnum, levelEnum } = require('../constants');
 
 const validate = Joi.object({

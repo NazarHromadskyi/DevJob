@@ -7,6 +7,7 @@ const {
   searchParamsEnum: {
     PARAMS,
     POSITION_ID,
+    QUERY,
   },
 } = require('../constants');
 const { positionController } = require('../controllers');
@@ -19,7 +20,6 @@ const {
 } = require('../middlewares');
 const { Position } = require('../models');
 const { positionValidator, queryParamsValidator } = require('../validators');
-const { QUERY } = require('../constants/searchParams.enum');
 
 const positionRouter = Router();
 

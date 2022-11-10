@@ -1,7 +1,7 @@
-const { applicantService, emailService } = require('../services');
 const { statusCodesEnum, emailActionEnum } = require('../constants');
-const { subscriptionUtil: { findMatches } } = require('../utils');
 const { Position } = require('../models');
+const { applicantService, emailService } = require('../services');
+const { subscriptionUtil: { findMatches } } = require('../utils');
 
 module.exports = {
   create: async (req, res, next) => {

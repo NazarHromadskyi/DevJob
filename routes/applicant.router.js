@@ -2,18 +2,23 @@ const { Router } = require('express');
 
 const {
   dbFieldsEnum: { _ID },
-  searchParamsEnum: { APPLICANT_ID, EMAIL, PARAMS },
+  searchParamsEnum: {
+    APPLICANT_ID,
+    EMAIL,
+    PARAMS,
+  },
 } = require('../constants');
 const { applicantController } = require('../controllers');
 const {
   applicantMiddleware: { isApplicantUnique },
   commonMiddleware: {
-    getItemByParam, isItemPresent,
+    getItemByParam,
+    isItemPresent,
     validateByParam,
   },
 } = require('../middlewares');
-const { applicantValidator } = require('../validators');
 const { Applicant } = require('../models');
+const { applicantValidator } = require('../validators');
 
 const applicantRouter = Router();
 

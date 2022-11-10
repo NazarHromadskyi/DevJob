@@ -1,6 +1,6 @@
 module.exports = {
-  NODEJS: 'nodejs',
   ANGULAR: 'angular',
   JAVASCRIPT: 'javascript',
+  NODEJS: 'nodejs',
   REACT: 'react',
 };

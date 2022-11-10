@@ -10,6 +10,7 @@ const {
 } = require('./configs');
 const { mainErrorHandler } = require('./errors');
 const { applicantRouter, positionRouter } = require('./routes');
+
 require('dotenv').config();
 
 const app = express();

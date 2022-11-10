@@ -10,7 +10,7 @@ module.exports = {
 
       Object.assign(filterObject, {
         $and: [
-          { categories: { $in: category } },
+          { categories: { $eq: category } },
           { level: { $eq: level } },
           { japaneseKnowledge: { $in: japaneseSearchIn } },
         ],

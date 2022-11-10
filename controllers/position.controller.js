@@ -118,7 +118,7 @@ module.exports = {
             company,
             japaneseRequired: japaneseNormalized,
             level,
-          },
+          }, // todo throw params by object
         );
       });
 

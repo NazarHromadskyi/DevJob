@@ -1,10 +1,33 @@
-const { applicantService } = require('../services');
-const { statusCodesEnum } = require('../constants');
+const { applicantService, emailService } = require('../services');
+const { statusCodesEnum, emailActionEnum } = require('../constants');
+const { subscriptionUtil: { findMatches } } = require('../utils');
+const { Position } = require('../models');
 
 module.exports = {
   create: async (req, res, next) => {
     try {
       const item = await applicantService.create(req.body);
+      const {
+        categories,
+        email,
+        japaneseKnowledge,
+        level,
+      } = item;
+
+      const positions = await findMatches(
+        Position,
+        {
+          category: categories,
+          japanese: japaneseKnowledge,
+          level,
+        },
+      );
+
+      await emailService.sendEmail(
+        email,
+        emailActionEnum.APPLICANT_CREATED,
+        { email, positions },
+      );
 
       res.json(item);
     } catch (e) {
@@ -19,6 +42,27 @@ module.exports = {
         body,
       } = req;
       const item = await applicantService.update(applicantId, body);
+      const {
+        categories,
+        email,
+        japaneseKnowledge,
+        level,
+      } = item;
+
+      const positions = await findMatches(
+        Position,
+        {
+          category: categories,
+          japanese: japaneseKnowledge,
+          level,
+        },
+      );
+
+      await emailService.sendEmail(
+        email,
+        emailActionEnum.APPLICANT_CREATED, // todo update template
+        { email, positions },
+      );
 
       res.json(item);
     } catch (e) {

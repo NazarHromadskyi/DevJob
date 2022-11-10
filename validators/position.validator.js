@@ -11,7 +11,7 @@ const createPosition = Joi.object({
     .required()
     .lowercase()
     .trim()
-    .valid(Object.values(categoryEnum)),
+    .valid(...Object.values(categoryEnum)),
 
   company: Joi
     .string()
@@ -23,18 +23,18 @@ const createPosition = Joi.object({
     .required()
     .lowercase()
     .trim()
-    .valid(Object.values(levelEnum)),
+    .valid(...Object.values(levelEnum)),
 
   japaneseRequired: Joi
     .boolean()
     .required(),
 });
 
-const patchPosition = Joi.object({
+const updatePosition = Joi.object({
   japaneseRequired: Joi.boolean(),
 });
 
 module.exports = {
   createPosition,
-  patchPosition,
+  updatePosition,
 };

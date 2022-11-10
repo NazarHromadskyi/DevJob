@@ -1,8 +1,10 @@
 module.exports = {
-  emailActionEnum: require('./emailAction.enum'),
   categoryEnum: require('./category.enum'),
+  dbFieldsEnum: require('./dbFields.enum'),
+  emailActionEnum: require('./emailAction.enum'),
   levelEnum: require('./level.enum'),
   modelNames: require('./modelNames'),
   regexp: require('./regexp'),
-  statusCode: require('./statusCode.enum'),
+  searchParamsEnum: require('./searchParams.enum'),
+  statusCodesEnum: require('./statusCode.enum'),
 };

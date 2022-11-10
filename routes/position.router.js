@@ -18,11 +18,16 @@ const {
   },
 } = require('../middlewares');
 const { Position } = require('../models');
-const { positionValidator } = require('../validators');
+const { positionValidator, queryParamsValidator } = require('../validators');
+const { QUERY } = require('../constants/searchParams.enum');
 
 const positionRouter = Router();
 
-positionRouter.get('/', positionController.getAll);
+positionRouter.get(
+  '/',
+  validateByParam(queryParamsValidator.validate, QUERY),
+  positionController.getAll,
+);
 positionRouter.post(
   '/',
   validateByParam(positionValidator.createPosition),

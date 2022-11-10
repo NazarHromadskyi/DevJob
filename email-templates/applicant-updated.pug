@@ -1,0 +1,12 @@
+extends container
+
+block content
+    div
+        p We have a new list of positions based on your latest update
+        ul
+            for position in positions
+              hr
+              li
+              span Category: #{position.category}
+              li
+              span Level: #{position.level}

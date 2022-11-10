@@ -1,10 +1,12 @@
-const { positionService } = require('../services');
-const { statusCodesEnum } = require('../constants');
+const { positionService, emailService } = require('../services');
+const { statusCodesEnum, emailActionEnum } = require('../constants');
+const { Applicant } = require('../models');
+const { subscriptionUtil: { findMatches } } = require('../utils');
 
 module.exports = {
   getAll: async (req, res, next) => {
     try {
-      const items = await positionService.getAll();
+      const items = await positionService.getAll(req.query);
 
       res.json(items);
     } catch (e) {
@@ -15,8 +17,41 @@ module.exports = {
   create: async (req, res, next) => {
     try {
       const item = await positionService.create(req.body);
+      const {
+        description,
+        category,
+        company,
+        japaneseRequired,
+        level,
+      } = item;
+      let japaneseNormalized;
 
-      res.statusCodesEnum.CREATED.json(item);
+      japaneseRequired ? japaneseNormalized = 'required' : japaneseNormalized = 'not required';
+
+      const applicants = await findMatches(
+        Applicant,
+        {
+          category,
+          level,
+          japanese: japaneseRequired,
+        },
+      );
+
+      applicants.forEach((applicant) => {
+        emailService.sendEmail(
+          applicant.email,
+          emailActionEnum.POSITION_CREATED,
+          {
+            category,
+            description,
+            company,
+            japaneseRequired: japaneseNormalized,
+            level,
+          },
+        );
+      });
+
+      res.status(statusCodesEnum.CREATED).json(item);
     } catch (e) {
       next(e);
     }
@@ -48,8 +83,44 @@ module.exports = {
 
   delete: async (req, res, next) => {
     try {
-      const { positionId } = req.params;
+      const {
+        item: {
+          description,
+          category,
+          company,
+          japaneseRequired,
+          level,
+        },
+        params: { positionId },
+      } = req;
+      let japaneseNormalized;
+
+      japaneseRequired ? japaneseNormalized = 'required' : japaneseNormalized = 'not required';
+
       await positionService.deleteById(positionId);
+
+      const applicants = await findMatches(
+        Applicant,
+        {
+          category,
+          level,
+          japanese: japaneseRequired,
+        },
+      );
+
+      applicants.forEach((applicant) => {
+        emailService.sendEmail(
+          applicant.email,
+          emailActionEnum.POSITION_DELETED,
+          {
+            category,
+            description,
+            company,
+            japaneseRequired: japaneseNormalized,
+            level,
+          },
+        );
+      });
 
       res.sendStatus(statusCodesEnum.DELETED);
     } catch (e) {

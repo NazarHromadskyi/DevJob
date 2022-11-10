@@ -1,5 +1,7 @@
 const {
   emailActionEnum: {
+    APPLICANT_CREATED,
+    APPLICANT_UPDATED,
     POSITION_CREATED,
     POSITION_DELETED,
   },
@@ -14,5 +16,15 @@ module.exports = {
   [POSITION_DELETED]: {
     subject: 'Position has been deleted',
     templateName: 'position-deleted',
+  },
+
+  [APPLICANT_CREATED]: {
+    subject: 'Applicant has been created',
+    templateName: 'applicant-created',
+  },
+
+  [APPLICANT_UPDATED]: {
+    subject: 'Applicant has been updated',
+    templateName: 'applicant-updated',
   },
 };

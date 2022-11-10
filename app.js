@@ -3,8 +3,9 @@ const mongoose = require('mongoose');
 
 const {
   config: {
-    PORT,
+    DATABASE_NAME,
     MONGO_URL,
+    PORT,
   },
 } = require('./configs');
 const { mainErrorHandler } = require('./errors');
@@ -29,7 +30,7 @@ app.listen(PORT, async () => {
   try {
     console.log(`App listen: ${PORT}`);
 
-    await mongoose.connect(MONGO_URL);
+    await mongoose.connect(`${MONGO_URL}${DATABASE_NAME}`);
   } catch (e) {
     console.log(e);
   }

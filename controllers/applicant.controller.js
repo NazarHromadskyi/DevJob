@@ -60,7 +60,7 @@ module.exports = {
 
       await emailService.sendEmail(
         email,
-        emailActionEnum.APPLICANT_CREATED, // todo update template
+        emailActionEnum.APPLICANT_UPDATED,
         { email, positions },
       );
 

@@ -1,11 +1,11 @@
-const EmailTemplates = require('email-templates');
 const nodemailer = require('nodemailer');
 const path = require('path');
+const hbs = require('nodemailer-express-handlebars');
 
 const emailTemplatesObj = require('../email-templates');
 const { ApiError } = require('../errors');
 
-const sendEmail = async (userMail, emailAction, locals = {}) => {
+const sendEmail = async (userMail, emailAction, context = {}) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -14,28 +14,30 @@ const sendEmail = async (userMail, emailAction, locals = {}) => {
     },
   });
 
-  const templateParser = new EmailTemplates({
-    views: {
-      root: path.join(process.cwd(), 'email-templates'),
+  const handlebarOptions = {
+    viewEngine: {
+      extname: '.hbs',
+      defaultLayout: 'main',
+      layoutsDir: path.join(process.cwd(), 'email-templates', 'layouts'),
+      partialsDir: path.join(process.cwd(), 'email-templates', 'partials'),
     },
-  });
+    viewPath: path.join(process.cwd(), 'email-templates', 'views'),
+    extName: '.hbs',
+  };
 
-  const emailInfo = emailTemplatesObj[emailAction];
+  transporter.use('compile', hbs(handlebarOptions));
 
-  if (!emailInfo) {
+  const { subject, template } = emailTemplatesObj[emailAction] || {};
+
+  if (!subject || !template) {
     throw new ApiError('Wrong template name', 500);
   }
 
-  const html = await templateParser.render(
-    emailInfo.templateName,
-    { ...locals },
-  );
-
   return transporter.sendMail({
-    from: 'No reply DevJob',
     to: userMail,
-    subject: emailInfo.subject,
-    html,
+    subject,
+    template, // todo styles
+    context,
   });
 };
 

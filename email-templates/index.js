@@ -10,21 +10,21 @@ const {
 module.exports = {
   [POSITION_CREATED]: {
     subject: 'Position has been created',
-    templateName: 'position-created',
+    template: 'position-created',
   },
 
   [POSITION_DELETED]: {
     subject: 'Position has been deleted',
-    templateName: 'position-deleted',
+    template: 'position-deleted',
   },
 
   [APPLICANT_CREATED]: {
     subject: 'Applicant has been created',
-    templateName: 'applicant-created',
+    template: 'applicant-created',
   },
 
   [APPLICANT_UPDATED]: {
     subject: 'Applicant has been updated',
-    templateName: 'applicant-updated',
+    template: 'applicant-updated',
   },
 };

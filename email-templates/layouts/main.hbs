@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            color: black;
+            background-color: #363636;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wrapper {
+            width: 70%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            flex: 1;
+            padding: 15px 0;
+            font-size: 22px;
+        }
+
+        header, footer {
+            background-color: #5662F6;
+            min-height: 35px;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            text-transform: uppercase;
+        }
+
+        header {
+            font-weight: bold;
+            font-size: 30px;
+            border-radius: 0 0 10px 10px;
+        }
+
+        footer {
+            border-radius: 10px 10px 0 0;
+        }
+
+        .application__card {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 15px 20px;
+        }
+
+        .application__card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .application__card-subheader {
+            font-weight: lighter;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .application__card-subheader span {
+            text-decoration: underline;
+        }
+
+        .application__card-subheader p {
+            margin-right: 10px;
+        }
+
+        .application__card-description {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    {{>header}}
+    {{{body}}}
+    {{>footer}}
+</div>
+</body>
+</html>

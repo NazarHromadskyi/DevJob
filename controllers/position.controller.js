@@ -1,7 +1,5 @@
 const { statusCodesEnum, emailActionEnum } = require('../constants');
-const { Applicant } = require('../models');
-const { positionService, emailService } = require('../services');
-const { subscriptionUtil: { findMatches } } = require('../utils');
+const { positionService, emailService, applicantService } = require('../services');
 
 module.exports = {
   getAll: async (req, res, next) => {
@@ -28,14 +26,7 @@ module.exports = {
 
       japaneseRequired ? japaneseNormalized = 'required' : japaneseNormalized = 'not required';
 
-      const applicants = await findMatches(
-        Applicant,
-        {
-          category,
-          level,
-          japanese: japaneseRequired,
-        },
-      );
+      const applicants = await applicantService.findMatches(category, level, japaneseRequired);
 
       applicants.forEach((applicant) => {
         emailService.sendEmail(
@@ -99,14 +90,7 @@ module.exports = {
 
       await positionService.deleteById(positionId);
 
-      const applicants = await findMatches(
-        Applicant,
-        {
-          category,
-          level,
-          japanese: japaneseRequired,
-        },
-      );
+      const applicants = await applicantService.findMatches(category, level, japaneseRequired);
 
       applicants.forEach((applicant) => {
         emailService.sendEmail(

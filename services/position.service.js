@@ -34,4 +34,16 @@ module.exports = {
   updateById: (id, data) => Position.findByIdAndUpdate(id, data, { new: true }),
 
   deleteById: (id) => Position.findByIdAndDelete(id),
+
+  findMatches: (category, level, japanese) => {
+    const japaneseSearchIn = japanese ? [true, false] : [false];
+
+    return Position.find({
+      $and: [
+        { category: { $in: category } },
+        { level: { $eq: level } },
+        { japaneseRequired: { $in: japaneseSearchIn } },
+      ],
+    });
+  },
 };

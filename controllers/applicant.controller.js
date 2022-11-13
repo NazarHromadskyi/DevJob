@@ -1,7 +1,5 @@
 const { statusCodesEnum, emailActionEnum } = require('../constants');
-const { Position } = require('../models');
-const { applicantService, emailService } = require('../services');
-const { subscriptionUtil: { findMatches } } = require('../utils');
+const { applicantService, emailService, positionService } = require('../services');
 
 module.exports = {
   create: async (req, res, next) => {
@@ -14,14 +12,7 @@ module.exports = {
         level,
       } = item;
 
-      const positions = await findMatches(
-        Position,
-        {
-          category: categories,
-          japanese: japaneseKnowledge,
-          level,
-        },
-      );
+      const positions = await positionService.findMatches(categories, level, japaneseKnowledge);
 
       await emailService.sendEmail(
         email,
@@ -49,14 +40,7 @@ module.exports = {
         level,
       } = item;
 
-      const positions = await findMatches(
-        Position,
-        {
-          category: categories,
-          japanese: japaneseKnowledge,
-          level,
-        },
-      );
+      const positions = await positionService.findMatches(categories, level, japaneseKnowledge);
 
       await emailService.sendEmail(
         email,
